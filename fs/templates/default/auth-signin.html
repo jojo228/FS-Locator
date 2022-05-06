@@ -1,0 +1,91 @@
+{% extends 'default/home.html' %}
+
+{% block content %}
+
+
+
+<div class="auth-content container"  >
+	
+	<form action="{% url 'connexion' %}" method="POST">
+		{% csrf_token %}
+
+
+		{% if form.errors %}
+		<div class="" style="color: red; text-align: center;">
+			{% if form.errors %}
+			<div style="color: red; text-align: center;">
+				Numéro de téléphone ou Mot de passe Incorrect
+			</div>
+			{% endif %}
+		</div>
+		{% endif %}
+
+		<div class="row align-items-center" data-aos="fade-up">
+			<div style="align-items: center;" class="col-md-6">
+				<div class="card-body">
+					<!-- <img src="/static/assets/images/edouka.png" alt="" class="img-fluid mb-4"
+							width="120"> -->
+					<header class="section-header">
+						
+						<p>Bienvenu sur FS Locator</p>
+					  </header>
+				
+					<div class="input-group mb-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="feather icon-user"></i></span>
+						</div>
+						<input type="contact" name="contact" class="form-control" placeholder="contact">
+					</div>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="feather icon-lock"></i></span>
+						</div>
+						<input type="password" class="form-control" name="password" placeholder="Mot de passe">
+					</div>
+
+
+					<button style="margin-left: 40%;" value="{{ next }}" name="next" class="btn btn-primary btn-sm">Se connecter</button>
+
+
+
+					<!--<p class="mb-2 text-muted">Forgot password? <a href="auth-reset-password.html" class="f-w-400">Reset</a></p>
+							<p class="mb-0 text-muted">Don’t have an account? <a href="auth-signup.html" class="f-w-400">Signup</a></p>-->
+				</div>
+			</div>
+			<div class="col-md-6 d-none d-md-block">
+				<img src="/static/assets/images/auth/fs.png" alt="" class="img-fluid">
+			</div>
+		</div>
+</div>
+</div>
+</form>
+</section>
+{% block scripts %}
+<script>
+	document.addEventListener('DOMContentLoaded', () => { /*===== FOCUS =====*/
+		const inputs = document.querySelectorAll(".form__input");
+
+
+		/*=== Add focus ===*/
+		function addfocus() {
+			let parent = this.parentNode.parentNode
+			parent.classList.add("focus")
+		}
+
+		/*=== Remove focus ===*/
+		function remfocus() {
+			let parent = this.parentNode.parentNode
+			if (this.value == "") { parent.classList.remove("focus") }
+		}
+
+
+		/*=== To call function ===*/
+		inputs.forEach(input => {
+			input.addEventListener("focus", addfocus)
+			input.addEventListener("blur", remfocus)
+		})
+	})
+</script>
+{% endblock scripts %}
+
+{% endblock %}

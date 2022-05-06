@@ -1,0 +1,125 @@
+{% extends 'default/index.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    <h3 class="text-center">Profil du client</h3> <br/>
+<div class="row">
+
+    <div class="col-md-8">
+        <div class="card card-body">
+            <h4>{{profil.nom_client}} {{profil.Prénoms_client}}</h4>
+            <h7>Date de création du profil: <strong style="color: blue; font-size: medium">{{profil.date_creation}}</strong></h7><hr>
+
+            <div class="container">
+              <div class="row">
+                <div class="col">
+
+                    <h5>Informations personnelles du client</h5>
+
+                    <div class="col">
+                      <h6>Nom: <strong style="color: blue; font-size: medium">{{profil.nom_client}}</strong></h6>
+                    </div>
+
+                    <div class="col">
+                      <h6>Prénoms: <strong style="color: blue; font-size: medium">{{profil.Prénoms_client}}</strong></h6>
+                    </div>
+
+                    <div class="col">
+                      <h6>Zone: <strong style="color: blue; font-size: medium">{{profil.zone}}</strong></h6>
+                    </div>
+
+                    
+                </div>
+                <div class="col">
+
+                    <h5>Données de locatisation du client</h5>
+
+                    <div class="col">
+                      <h6>Longitude Résidence: <strong style="color: blue; font-size: medium">{{profil.longitude}}</strong></h6>
+                    </div>
+
+                    <div class="col">
+                      <h6>Latitude Résidence: <strong style="color: blue; font-size: medium">{{profil.latitude}}</strong></h6>
+                    </div> 
+
+                    
+
+                    </div>
+                </div>
+    
+        </div>      
+
+    </div>
+  
+    
+    </div>
+
+    <br>
+
+
+    <div class="col-sm">
+        <div class="card card-body">
+            <h5>Options</h5>
+            <hr>
+            <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'client_lieu_travail' profil.id %}">Localiser la résidence</a>
+            
+            <!-- <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'modifier_client' profil.id %}">Modifier les informations du client</a> -->
+            {% if user.is_staff %}
+            <a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'supprimer_client' profil.id %}">Supprimer le client</a>
+            <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'imprimer_client' profil.id %}">Imprimer</a>
+            {% endif %}
+            
+            
+
+
+        </div>
+    
+       
+    </div>
+</div>
+
+
+    <br>
+
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h4 class="m-b-10">Adressage</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- [ breadcrumb ] end -->
+    <!-- [ Main Content ] start -->
+    <div class="row">
+        <!-- [ basic-map ] start -->
+        <div class="col-lg-12 col-xl-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Résidence du client</h5>
+                    
+                </div>
+                <div class="card-body">
+                    <div style="height:400px;">
+                        <iframe width="100%" height="100%" class="absolute inset-0" frameborder="0" title="map" marginheight="0" marginwidth="0" scrolling="no" 
+                        src="https://maps.google.com/maps?width=100%&amp;height=400&amp;hl=en&amp;q={{profil.latitude}},{{profil.longitude}}&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
+                        style="filter: scale(100) contrast(1.2) opacity(0.4);"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ basic-map ] end -->
+        
+    </div>
+    
+   
+
+        
+    </div>
+
+
+    {% endblock content %}

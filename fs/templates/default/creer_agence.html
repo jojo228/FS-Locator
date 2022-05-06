@@ -1,0 +1,66 @@
+{% extends 'default/index.html'%}
+
+{% block content %}
+
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card card-body">
+      <div class="card-header">
+        <h3>Ajouter une agence</h3>
+      </div>
+
+      <div class="card-body">
+
+        <form action="{% url 'ajouter_agence' %}" method="POST">
+          <div class="row g-3">
+          {% csrf_token %}
+          <div class="col-md-6">
+            <label for="" class="form-label">Nom de l'agence</label>
+			<input type="text" name="nom_agence" class="input-bx" placeholder="">
+          </div>
+
+		  <div class="col-md-6">
+            <label for="" class="form-label">institution</label>
+			{{form.entreprise}}
+			
+          </div>
+        
+          <div class="col-md-6">
+            <label for="" class="form-label">contact</label>
+			<input type="text" name="contact" class="input-bx" placeholder="">
+          </div>
+        
+          <hr>
+        
+          <div class="col-md-6">
+            <label for="" class="form-label">Mot de passe</label>
+			<input type="password" name="password" class="input-bx" placeholder="">
+        
+          </div>
+        
+          <div class="col-md-6">
+            <label for="" class="form-label">Confirmer le mot de passe</label>
+			<input type="password" name="passwordCheck" class="input-bx" placeholder="">
+          </div>
+        
+        
+        <br>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button type="submit" class="btn btn-primary">AJOUTER</button>
+        </div>
+
+        </form>
+        
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

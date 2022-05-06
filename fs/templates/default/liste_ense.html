@@ -1,0 +1,53 @@
+{% extends 'default/index.html' %}
+
+{% block content %}
+
+<h3 class="text-center">Liste des institutions</h3> <br/>
+    <div class="row">
+        <div class="col">
+            <div class="card card-body">
+
+                <form method="get">
+										{{myfilter.form}}
+
+                    <button class="btn btn-primary btn-sm" type="submit">Rechercher</button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+	<br>
+
+<!-- [ Main Content ] start -->
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Nom de l'institution</th>
+			<th scope="col">Action</th>
+			
+		</tr>
+	</thead>
+	<tbody>
+		{% for i in structure %}
+		<tr>
+			<td>{{nombre}}</td>
+			<td>{{i.nom_ense}}</td>
+			<td><a class="btn btn-sm btn-info" href="{% url 'profil_entreprise' i.id %}">Afficher</a></td>
+			
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+<!-- [ Main Content ] end -->
+
+{% endblock content %}

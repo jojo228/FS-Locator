@@ -1,0 +1,153 @@
+
+{% extends 'default/home.html'%}
+
+{% block content %}
+<br>
+<br>
+<br>
+	<div class="auth-content container">
+		<!-- <div class="card"> -->
+			{% for message in messages %}
+						<div class="alert alert-success d-flex align-items-center" role="alert">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Success:">
+							  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+							</svg>
+							<div style="margin-left: 2%;">
+								{{message}}
+							</div>
+						 </div>
+						
+			{% endfor %}
+			<br>
+			<div class="row align-items-center">
+				<div class="col-md-6">
+					<div class="card-body">
+						
+						<form method="POST" action="">
+							{% csrf_token %}
+
+						<img src="/static/assets/images/edouka.png" alt="" class="img-fluid mb-4">
+						<h4 class="mb-3 f-w-400">Enregistrer un nouvel utilisateur</h4>
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="feather icon-user"></i></span>
+							</div>
+							{{form.username}}
+
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="feather icon-mail"></i></span>
+							</div>
+							{{form.email}}
+						</div>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="feather icon-lock"></i></span>
+							</div>
+							{{form.password1}}
+
+						</div>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="feather icon-lock"></i></span>
+							</div>
+							{{form.password2}}
+
+						</div>
+						<button href="" class="btn btn-primary btn-sm" type="submit" name="Create User">Enregistrer</button>
+						<!--<p class="mb-2">Already have an account? <a href="{% url 'connexion'%}" class="f-w-400">Log in</a></p>-->
+						<br>
+						
+
+					</div>
+					
+				</form>
+				
+				</div>
+				
+				
+				<div class="col-md-6 d-none d-md-block">
+					<img src="/static/assets/images/logo edouka.png" alt="" class="img-fluid">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		var form_fields = document.getElementsByTagName('input')
+
+		form_fields[1].placeholder="Nom d'utilisateur";
+		form_fields[2].placeholder="Email..";
+		form_fields[3].placeholder="Mot de passe";
+		form_fields[4].placeholder="Confirmer mot de passe";
+
+		for (var field in form_fields){
+			form_fields[field].className += 'form-control'
+		}
+
+	</script>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+<form action="{% url 'connexion' %}" method="POST">
+	{% csrf_token %}
+
+
+	{% if form.errors %}
+	<div class="" style="color: red; text-align: center;">
+		{% if form.errors %}
+		<div style="color: red; text-align: center;">
+			Numéro de téléphone ou Mot de passe Incorrect
+		</div>
+		{% endif %}
+	</div>
+	{% endif %}
+
+	<div class="row align-items-center">
+		<div style="align-items: center;" class="col-md-6">
+			<div class="card-body">
+				<div class="col-md-6 d-none d-md-block"> 
+				<img src="/static/assets/images/auth/fs.png" alt="" class="img-fluid"
+						>
+					</div> 
+				<h4 class="mb-3 f-w-400">Se connecter</h4>
+				<div class="input-group mb-2">
+					<div class="input-group-prepend">
+						<span class="input-group-text"><i class="feather icon-user"></i></span>
+					</div>
+					<input type="contact" name="contact" class="form-control" placeholder="contact">
+				</div>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text"><i class="feather icon-lock"></i></span>
+					</div>
+					<input type="password" class="form-control" name="password" placeholder="Mot de passe">
+				</div>
+
+
+				<button value="{{ next }}" name="next" class="btn btn-primary btn-sm">Se connecter</button>
+
+
+
+				<!--<p class="mb-2 text-muted">Forgot password? <a href="auth-reset-password.html" class="f-w-400">Reset</a></p>
+						<p class="mb-0 text-muted">Don’t have an account? <a href="auth-signup.html" class="f-w-400">Signup</a></p>-->
+			</div>
+		</div>
+		<!-- <div class="col-md-6 d-none d-md-block">
+			<img src="/static/assets/images/auth/fs.png" alt="" class="img-fluid">
+		</div> -->
+	</div>
+</div>
+</div>
+</form>

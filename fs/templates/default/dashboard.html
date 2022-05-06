@@ -1,0 +1,45 @@
+{% extends 'default/index.html'%}
+
+{% block content %}
+
+<div class="row">
+
+    <div class="col">
+        <div class="col-md">
+            <a href="{% url 'liste_client' %}">
+                <div class="card text-center text-white  mb-3 shadow p-1 mb-5 bg-body rounded" id="total-orders">
+                    <div class="card-header">
+                        <h5 class="card-title">Nombre total de clients</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">{{client}}</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+    {% if user.is_staff %}
+
+    <div class="col">
+        <div class="col-md">
+            <a href="{% url 'liste_agent' %}">
+                <div class="card text-center text-white  mb-3 shadow p-1 mb-5 bg-body rounded" id="orders-pending">
+                    <div class="card-header">
+                        <h5 class="card-title">Nombre total d'agents</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">{{agent}}</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    {%endif%}
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,197 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<title>Full Success</title>
+	<!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 11]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	
+
+	<!-- Favicon icon -->
+	<link rel="icon" href="./static/assets/images/logo edouka.png" type="image/x-icon">
+	<!-- fontawesome icon -->
+	<link rel="stylesheet" type="text/css" href="./static/assets/fonts/fontawesome/css/fontawesome-all.min.css">
+	<!-- animation css -->
+	<link rel="stylesheet" type="text/css" href="./static/assets/plugins/animation/css/animate.min.css">
+
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+	
+
+
+	<!-- vendor css -->
+	<link rel="stylesheet" type="text/css" href="./static/assets/css/style.css">
+	<link rel="stylesheet" href="./static/assets/css/dash.css">
+</head>
+
+<body class="">
+
+	
+
+<!-- [ Main Content ] start -->
+
+<div class="pcoded-main-container">
+        	<div class="col-lg-12">
+		<div class="card card-body ">
+
+
+
+			<div class="card-header">
+				<h3>{{form.client}} {{form.client.Prénoms_client}}</h3>
+			</div>
+			<div class="card-body">
+				<h5>Identité du cautionnaire</h5>
+				<hr>
+				<div class="row">
+					<div class="col-md-6">
+						<form action="" method="POST">
+							{% csrf_token %}
+							<div class="form-group">
+								<label>Nom: </label>
+								{{form.nom_caution}}
+							</div>
+
+							<div class="form-group">
+								<label>N° de compte: </label>
+								{{form.compte_caution}}
+							</div>
+
+							<div class="form-group">
+								<label>Longitude de résidence:</label>
+								{{form.long_residence}}
+							</div>
+
+							<div class="form-group">
+								<label>Latitude de résidence:</label>
+								{{form.lat_residence}}
+							</div>
+
+							<div class="form-group">
+								<label>Email:</label>
+								{{form.email_caution}}
+							</div>
+
+
+					</div>
+					<div class="col-md-6">
+
+						<div class="form-group">
+							<label>Prénoms:</label>
+							{{form.Prénoms_caution}}
+						</div>
+
+						<div class="form-group">
+							<label>Tél:</label>
+							{{form.Tél_caution}}
+						</div>
+
+						<div class="form-group">
+							<label for="exampleFormControlSelect1">Longitude lieu de travail:</label>
+							{{form.longitude_lt}}
+						</div>
+
+						<div class="form-group">
+							<label>Latitude lieu de travail:</label>
+							{{form.latitude_lt}}
+						</div>
+					</div>
+				</div>
+				<h5>Plan géographique des coordonnées</h5>
+				<hr>
+				<div class="row">
+					<!-- [ basic-map ] start -->
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-header">
+								<h3>Résidence du cautionnaire</h3>
+								
+							</div>
+							<div class="card-body">
+								<div style="height:400px; width: 930px;">
+									<iframe width="100%" height="100%" class="absolute inset-0" frameborder="0" title="map" marginheight="0" marginwidth="0" scrolling="no" 
+									src="https://maps.google.com/maps?width=100%&amp;height=400&amp;hl=en&amp;q={{form.lat_residence}},{{form.long_residence}}&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
+									style="filter: scale(100) contrast(1.2) opacity(0.4);"></iframe>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<br>
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-header">
+								<h3>Lieu de travail du cautionnaire</h3>
+							</div>
+							<div class="card-body">
+								<div class="set-map" style="height:400px; width: 930px;">
+									<iframe width="100%" height="100%" class="absolute inset-0" frameborder="0" title="map" marginheight="0" marginwidth="0" scrolling="no" 
+				  src="https://maps.google.com/maps?width=100%&amp;height=400&amp;hl=en&amp;q={{form.latitude_lt}},{{form.longitude_lt}}&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
+				   style="filter: scale(100) contrast(1.2) opacity(0.4);"></iframe>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- [ Markers-map ] end -->
+					
+				</div>
+
+				
+				<div class="d-grid gap-2 col-2 mx-auto">
+					<a href="{% url 'profil_client' form.id %}" class="btn btn-outline-danger hidden-print" > Retour</a>
+            <button class="btn btn-outline-info hidden-print" onclick="imprimer()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Imprimer</button>
+        </form>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+		
+
+		<!-- Required Js -->
+		<script src="./static/assets/js/vendor-all.min.js"></script>
+		<script src="./static/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+		<script src="./static/assets/js/pcoded.min.js"></script>
+		
+		<!-- google-map Js -->
+		<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+		<script src="./static/assets/plugins/google-maps/js/gmaps.js"></script>
+		<script src="./static/assets/js/pages/google-maps.js"></script>
+
+		<script>function imprimer() {
+			window.print();
+		}</script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+  

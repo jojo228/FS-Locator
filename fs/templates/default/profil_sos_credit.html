@@ -1,0 +1,71 @@
+{% extends 'default/index.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    <h3 class="text-center">Profil du débiteur</h3> <br/>
+<div class="row">
+
+    <div class="col-md-8">
+        <div class="card card-body">
+            <h4>Débiteur</h4><hr>
+
+            <div class="container">
+              <div class="row">
+                <div class="list-group">
+
+                    <div class="col">
+                      <h6>Nom: <strong style="color: blue; font-size: medium">{{profil.nom}}</strong></h6>
+                    </div>
+
+                    <div class="col">
+                      <h6>Prénoms: <strong style="color: blue; font-size: medium">{{profil.prenom}}</strong></h6>
+                    </div>
+
+                    <div class="col">
+                      <h6>Echéance du crédit: <strong style="color: blue; font-size: medium">{{profil.echeance_credit}}</strong></h6>
+                    </div>
+
+                    <div class="col">
+                      <h6>Statut du client: <strong style="color: blue; font-size: medium">{{profil.statut}}</strong></h6>
+                    </div>
+
+                    <div class="col">
+                      <h6>Infoline: <strong style="color: blue; font-size: medium">{{profil.infoline}}</strong></h6>
+                    </div>
+                    <br>
+
+                    
+                </div>
+    
+        </div>      
+
+    </div>
+  </div>
+    <br>
+    </div>
+
+    <br>
+
+
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Options</h5>
+            <hr>
+            <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'modifier_client_avec_credit' profil.id %}">Modifier les informations du débiteur</a>
+            <a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'supprimer_client_avec_credit' profil.id %}">Supprimer le débiteur</a>
+            
+
+
+        </div>
+    
+        <br>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    {% endblock content %}

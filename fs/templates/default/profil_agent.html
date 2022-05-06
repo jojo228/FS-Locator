@@ -1,0 +1,71 @@
+{% extends 'default/index.html' %}
+
+
+{% block content %}
+
+
+<br>
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-8">
+            <div class="card card-body">
+                <h3>{{profil.nom}} {{profil.prenom}}</h3>
+                
+                
+            </div>
+        </div>
+
+       
+
+
+        
+    </div>
+</div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-lg-12 col-xl-12">
+        <div class="card">
+            <div class="card card-body" style="height:400px">
+                <div class="card-header">
+                    <h4>Liste des clients</h4>
+                </div>
+                <div class="card-body" >
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Nom et prénoms</th>
+                                <th>Zone</th>
+                                <th>Adresse</th>
+                            </tr>
+                        </thead>
+
+
+                        <tbody>
+                            {% for i in client %}
+                            <tr>
+                                <td>{{i.nom_client}} {{i.Prénoms_client}}</td>
+                                <td>{{i.zone}}</td>
+                                <td><a class="btn btn-sm btn-info" href="{% url 'profil_client' i.id %}">Afficher</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+
+
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+
+{% endblock content %}

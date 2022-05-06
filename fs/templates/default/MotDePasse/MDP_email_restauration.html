@@ -1,0 +1,51 @@
+
+<style>
+   .pass_show{position: relative} 
+
+.pass_show .ptxt { 
+
+position: absolute; 
+
+top: 50%; 
+
+right: 10px; 
+
+z-index: 1; 
+
+color: #f36c01; 
+
+margin-top: -10px; 
+
+cursor: pointer; 
+
+transition: .3s ease all; 
+
+} 
+
+.pass_show .ptxt:hover{color: #333333;} 
+
+</style>
+
+
+
+		    <form method="POST", action="">
+                    {% csrf_token %}
+                
+                    {{form}} 
+              
+
+                <button href="" class="btn btn-primary btn-sm" type="submit" name="Create User">Enregistrer</button>
+        </form>
+	
+
+<script>
+    var form_fields = document.getElementsByTagName('input')
+  
+    
+    
+    for (var field in form_fields){
+      form_fields[field].className += 'form-control'
+    }
+  
+  </script>
+

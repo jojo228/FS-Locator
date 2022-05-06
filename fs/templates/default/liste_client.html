@@ -1,0 +1,55 @@
+{% extends 'default/index.html' %}
+
+{% block content %}
+
+<h3 class="text-center">Liste des clients</h3> <br/>
+    <div class="row">
+        <div class="col">
+            <div class="card card-body">
+
+                <form method="get">
+										{{myfilter.form}}
+
+                    <button class="btn btn-primary btn-sm" type="submit">Rechercher</button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+	<br>
+
+<!-- [ Main Content ] start -->
+<table class="table table-hover">
+	<thead>
+		<tr>
+			
+			<th scope="col">Nom du client</th>
+			<th scope="col">Zone</th>
+			<th scope="col">Addresse</th>
+			
+		</tr>
+	</thead>
+	<tbody>
+		{% for i in client %}
+		<tr>
+			
+			<td>{{i.nom_client}} {{i.Prénoms_client}}</td>
+			<td>{{i.zone}}</td>
+			<td><a class="btn btn-sm btn-info" href="{% url 'profil_client' i.id %}">Afficher </a></td>
+			
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+<!-- [ Main Content ] end -->
+
+{% endblock content %}

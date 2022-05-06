@@ -1,0 +1,28 @@
+{% extends 'default/index.html'%}
+
+{% block content %}
+
+<br>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <p>Voulez vous vraiment supprimer "{{structure}}" ?</p>
+
+            <form action="{% url 'supprimer_agence' structure.id %}" method="POST">
+             {% csrf_token %}
+             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a class="btn btn-sm btn-warning" href="{% url 'liste_agence' %}">Annuler</a>
+
+                <button class="btn btn-sm btn-danger" type="submit" name="Confirm">Supprimer</button>
+             </div>
+            
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
