@@ -1,1 +1,1 @@
-web: gunicorn fs.wsgi --log-file -
+web: gunicorn locator.wsgi --log-file -
