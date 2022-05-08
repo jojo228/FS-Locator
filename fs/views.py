@@ -142,7 +142,7 @@ def maj_profil_employe(request, pk):
 def ListeAgent(request):
    
     #Ce tag affiche la liste de tous les employés
-    liste_employe = Agent.objects.all()
+    liste_employe = Agent.objects.filter(Q(user__is_superuser = 0)).all()
     
     return render(request, 'default/liste_agent.html', locals())
 
