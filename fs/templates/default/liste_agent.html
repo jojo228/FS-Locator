@@ -2,19 +2,19 @@
 
 {% block content %}
 
-<h3 class="text-center">Liste des agents</h3> <br/>
+<h3 class="text-center">Liste des agents</h3> <br />
 
 <div class="row">
 	<div class="col">
-			<div class="card card-body">
+		<div class="card card-body">
 
-					<form method="get">
-							{{myfilter.form}}
+			<form method="get">
+				{{myfilter.form}}
 
-							<button class="btn btn-primary btn-sm" type="submit">Rechercher</button>
-					</form>
+				<button class="btn btn-primary btn-sm" type="submit">Rechercher</button>
+			</form>
 
-			</div>
+		</div>
 	</div>
 
 </div>
@@ -26,7 +26,7 @@
 <table class="table table-hover">
 	<thead>
 		<tr>
-			
+
 			<th scope="col">Nom de l'agent</th>
 			<th>Affichage</th>
 		</tr>
@@ -34,7 +34,7 @@
 	<tbody>
 		{% for i in liste_employe %}
 		<tr>
-			
+
 			<td>{{i.nom}} {{i.prenom}}</td>
 			<td><a class="btn btn-sm btn-info" href="{% url 'profil_agent' i.id %}">Afficher</a></td>
 		</tr>
