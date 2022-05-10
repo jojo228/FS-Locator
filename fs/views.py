@@ -29,7 +29,7 @@ def Dashboard(request):
         
         client = Client.objects.filter(agent__user__is_superuser = 0).all().count()
           
-        agent = Agent.objects.filter(client__agent__user__is_superuser = 0).all().count()
+        agent = Agent.objects.filter(user__is_superuser = 0).all().count()
     
 
     else:
