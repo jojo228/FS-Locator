@@ -285,7 +285,7 @@ def ImageResidence(request, pkey):
     client  = Client.objects.get(id=pkey)
     form = ImageResidenceForm(instance=client)
     if request.method == 'POST':
-        form = ImageResidenceForm(request.POST, instance=client)
+        form = ImageResidenceForm(request.POST, request.FILES, instance=client)
         if form.is_valid():
             form.save()
             print("yes")
