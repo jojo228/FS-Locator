@@ -86,10 +86,7 @@ class ImageResidenceForm(ModelForm):
         model = Client
         fields = ('image', )
 
-        widgets = {
-            'image': forms.ImageField(),
-            
-        }
+    
 
 
 
