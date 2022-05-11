@@ -280,6 +280,21 @@ def ClientResidence(request, pkey):
     return render(request, 'default/client_residence.html', context)
 
 
+def ImageResidence(request, pkey):
+   
+    client  = Client.objects.get(id=pkey)
+    form = ImageResidenceForm(instance=client)
+    if request.method == 'POST':
+        form = ImageResidenceForm(request.POST, instance=client)
+        if form.is_valid():
+            form.save()
+            print("yes")
+        return redirect('profil_client', client.id)
+            
+    context = {'form':form}
+    return render(request, 'default/image_residence.html', context)
+
+
 
 #@login_required(login_url='connexion')
 def ImprimerClient(request, pkey):

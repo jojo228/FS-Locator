@@ -67,8 +67,6 @@ class ClientForm(ModelForm):
         } 
 
 
-        
-
 
 class ResidenceForm(ModelForm):
     class Meta:
@@ -79,7 +77,19 @@ class ResidenceForm(ModelForm):
             'longitude': forms.TextInput(attrs={'class': 'form-control'}),
             'latitude': forms.TextInput(attrs={'class': 'form-control'}),
             
-        }      
+        }   
+
+
+
+class ImageResidenceForm(ModelForm):
+    class Meta:
+        model = Client
+        fields = ('image', )
+
+        widgets = {
+            'image': forms.ImageField(),
+            
+        }
 
 
 

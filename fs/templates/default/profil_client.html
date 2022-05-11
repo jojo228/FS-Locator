@@ -64,6 +64,7 @@
             <h5>Options</h5>
             <hr>
             <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'client_lieu_travail' profil.id %}">Localiser la résidence</a>
+            <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'image_residence' profil.id %}">Ajouter photo</a>
             
             <!-- <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'modifier_client' profil.id %}">Modifier les informations du client</a> -->
             {% if user.is_staff %}

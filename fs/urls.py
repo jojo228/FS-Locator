@@ -32,6 +32,7 @@ urlpatterns = [
    path('profil_client/<str:pkey>', views.ProfilClient, name="profil_client"),
    path('client_residence/<str:pkey>', views.ClientResidence, name="client_lieu_travail"),
    path('imprimer_client/<str:pkey>', views.ImprimerClient, name="imprimer_client"),
+   path('image_residence/<str:pkey>', views.ImageResidence, name="image_residence"),
 
 
 
