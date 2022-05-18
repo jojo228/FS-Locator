@@ -38,8 +38,6 @@ class FormeUser(forms.ModelForm):
         
 
        
-
-
 class AgentForm(ModelForm):
     class Meta:
         model = Agent

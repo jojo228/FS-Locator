@@ -25,7 +25,7 @@ class Client(models.Model):
     zone = models.CharField(max_length=200, null=True)
     longitude = models.CharField(max_length=200,  blank=True)
     latitude = models.CharField(max_length=200,  blank=True)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(blank=True)
     date_creation = models.DateField(auto_now=True)         
 
     def __str__(self):
