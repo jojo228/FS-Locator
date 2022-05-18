@@ -122,7 +122,12 @@
               </div>
               <div class="card-body">
                 <div class="set-map">
-                  <img src="{{profil.image.url}}">
+                  {% if profil.image %}
+                 <img src="{{profil.image.url }}" >
+                  {% else %}
+                  <img src="{% static 'assets/images/default_house.jpg' %}">
+                  {% endif %}
+                  
                 </div>
               </div>
             </div>
