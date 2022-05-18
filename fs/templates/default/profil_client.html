@@ -129,10 +129,10 @@
       <div class="card-body">
         <div class="set-map">
           {% if profil.image %}
-          <img src="{{profil.image.url }}">
+              <img src="{{ profil.image.url }}">
 
           {% else %}
-          <img src="{% static '/assets/images/default_house.jpg' %}">
+              <img src="{% static '/assets/images/default_house.jpg' %}">
 
           {% endif %}
 
