@@ -6,8 +6,11 @@ from .models import Agent
 class MyBackend(BaseBackend):
 
     def authenticate(self, request, **kwargs):
-        contact = kwargs['contact']
-        password = kwargs['password']
+        try:
+            contact = kwargs["contact"]
+        except KeyError:
+            return None
+        password = kwargs["password"]
         try:
             user = Agent.objects.get(contact=contact).user
             if user.check_password(password) is True:
