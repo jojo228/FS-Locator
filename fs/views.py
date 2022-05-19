@@ -105,11 +105,8 @@ def ajouter_employe(request):
 def detail_employe(request, pk, opt=None):
     
     employe = Agent.objects.get(id=pk)
-    option = request.POST.get('option')
-    if opt == 'delete':
-        employe.delete()
-        return redirect('liste_agent')
-    return render(request, 'marine/detail_agent.html', locals())
+    
+    return render(request, 'default/detail_agent.html', locals())
 
 
 #Mettre a jour le profil d'un employé

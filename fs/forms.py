@@ -105,7 +105,7 @@ class AuthenticationFormWithContact(forms.Form):
         if contact and password:
             self.user_cache = authenticate(self.request, contact=contact, password=password)
             if self.user_cache is None:
-                raise forms.ValidationError("Contact ou mot de passe invalide")
+                raise forms.ValidationError("Identifiant ou mot de passe invalide")
             else:
                 self.confirm_login_allowed(self.user_cache)
         return self.cleaned_data
